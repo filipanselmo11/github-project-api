@@ -12,11 +12,7 @@ export default {
 
             const project = await createProject.execute(title, technologie, ispublic);
 
-            return response.json({
-                error: false,
-                message: 'Project Criado com sucesso',
-                project
-            });
+            return response.json({ project });
         } catch(error) {
             return response.json({ message: error.message });
         }
@@ -28,10 +24,7 @@ export default {
 
             const projects = await listProjects.execute();
             
-            return response.json({
-                error: false,
-                projects
-            });
+            return response.json({ projects });
         } catch(error) {
             return response.json({ message: error.message });
         }
