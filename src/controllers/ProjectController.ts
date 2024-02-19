@@ -6,11 +6,11 @@ import { ProjectRepository } from "../repositories/ProjectRepository";
 export default {
     createProject: async(request: Request, response: Response) => {
         try {
-            const { title, technologie, ispublic } = request.body;
+            const { title, technologie, ispublic, urlimage } = request.body;
 
             const createProject = new CreateProjectService(new ProjectRepository());
 
-            const project = await createProject.execute(title, technologie, ispublic);
+            const project = await createProject.execute(title, technologie, ispublic, urlimage);
 
             return response.json({ project });
         } catch(error) {

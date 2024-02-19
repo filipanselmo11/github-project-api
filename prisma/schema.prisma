@@ -15,6 +15,7 @@ model Project {
   title String
   technologie String
   ispublic Boolean
+  urlimage String
   
   @@map("projects")
 }
