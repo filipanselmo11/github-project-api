@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  #MYSQL Database service
+  db:
+    container_name: github_project_api_db
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env
+    volumes:
+      - mysql_data:/var/lib/mysql
+  #Node API
+  api:
+    container_name: github_project_api_container
+    build:
+      context: .
+      dockerfile: DockerFile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+volumes:
+  mysql_data:
